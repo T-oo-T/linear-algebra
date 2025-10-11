@@ -1,0 +1,36 @@
+const { test } = require("node:test")
+const assert = require("assert").strict
+const { det, is_identity, is_square } = require("../src/matrix")
+
+test('simple 2x2 determinant', () => {
+    assert.strictEqual(det([[1,2],[3,4]]), -2)
+});
+
+test('3x3 determinant', () => {
+    assert.strictEqual(det([[1,2,3],[4,5,6],[7,8,9]]), 0)
+    assert.strictEqual(det([[1,5,3],[4,8,6],[7,8,9]]), -18)
+});
+
+test('4x4 determinant', () => {
+    assert.strictEqual(det([[1,5,3,7],[4,8,6,2],[7,8,9,5],[5,2,8,6]]), 408)
+});
+
+test("is_square", () => {
+    assert.strictEqual(is_square([1]), false)
+    assert.strictEqual(is_square([[1]]), true)
+    assert.strictEqual(is_square([[1,1],[2,2]]), true)
+    assert.strictEqual(is_square([[1,1],[2,2],[3,3]]), false)
+})
+
+const I_1 = [[1]]
+const I_2 = [[1,0], [0,1]]
+const I_3 = [[1,0,0], [0,1,0], [0,0,1]]
+
+test("is_identity", () => {
+    assert.strictEqual(is_identity([1]), false)
+    assert.strictEqual(is_identity([2]), false)
+    assert.strictEqual(is_identity(I_1), true)
+    assert.strictEqual(is_identity(I_2), true)
+    assert.strictEqual(is_identity(I_3), true)
+    assert.strictEqual(is_identity([[1,1],[2,2],[3,3]]), false)
+})

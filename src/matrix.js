@@ -24,6 +24,29 @@ function det(A) {
   return sum
 }
 
+function is_square(A) {
+  return A.length === A[0].length
+}
+
+function is_identity(A) {
+  if (!is_square(A)) {
+    return false
+  }
+
+  for (let i = 0; i < A.length; i++) {
+    for (let j = 0; j < A[i].length; j++) {
+      if (i === j && A[i][j] !== 1 ||
+          i !== j && A[i][j] !== 0 ) {
+            return false
+          }
+    }
+  }
+
+  return true
+}
+
 module.exports = {
-    det
+    det,
+    is_square,
+    is_identity
 }
