@@ -1,0 +1,12 @@
+{
+  "name": "linear-algebra",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test",
+    "test:watch": "node --test --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

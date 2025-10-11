@@ -24,7 +24,6 @@ function det(A) {
   return sum
 }
 
-console.assert(det([[1,2],[3,4]])===-2)
-console.assert(det([[1,2,3],[4,5,6],[7,8,9]])===0)
-console.assert(det([[1,5,3],[4,8,6],[7,8,9]])===-18)
-console.assert(det([[1,5,3,7],[4,8,6,2],[7,8,9,5],[5,2,8,6]])===408)
+module.exports = {
+    det
+}
