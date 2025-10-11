@@ -1,6 +1,6 @@
 const { test } = require("node:test")
 const assert = require("assert").strict
-const { det } = require("../determinant")
+const { det } = require("../src/determinant")
 
 test('simple 2x2 determinant', () => {
     assert.strictEqual(det([[1,2],[3,4]]), -2)
