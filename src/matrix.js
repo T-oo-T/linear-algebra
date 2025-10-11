@@ -29,6 +29,11 @@ function det(A) {
     throw new Error(`Expected square matrix, but got dimensions [${A.length}, ${A[0].length}].`)
   }
 
+  // determinant of 1x1 matrix is the number itself
+  if (A.length === 1) {
+    return A[0][0]
+  }
+
   if (A.length === 2) {
     return det2x2(A)
   }
@@ -45,8 +50,13 @@ function det(A) {
   return sum
 }
 
+function is_invertable(A) {
+  return det(A) !== 0
+}
+
 module.exports = {
     det,
     is_square,
-    is_identity
+    is_identity,
+    is_invertable
 }
