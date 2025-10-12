@@ -84,9 +84,9 @@ function cross(u, v) {
     [v[0], v[1]]
   ]
   return [
-    det(sub_i),
+    +det(sub_i),
     -det(sub_j),
-    det(sub_k)
+    +det(sub_k)
   ]
 }
 
