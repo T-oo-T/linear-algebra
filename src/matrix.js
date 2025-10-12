@@ -68,7 +68,7 @@ function transpose(A) {
 
 function dot(u, v) {
   if (u.length !== v.length) {
-    throw new Error(`Incompatible vector size: ${u.length} and ${v.length}`)
+    throw new Error(`Incompatible vector sizes: ${u.length} and ${v.length}`)
   }
   
   let sum = 0

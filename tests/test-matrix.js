@@ -70,6 +70,14 @@ test("transpose", () => {
     )
 })
 
+test("dot product", () => {
+    assert.strictEqual(dot([1,2,3], [4,5,6]), 32)
+    assert.strictEqual(dot([1,0],[0,1]), 0)
+    assert.throws(() => {
+        dot([1,2,3],[5,6])
+    }, {name: "Error", message: "Incompatible vector sizes: 3 and 2"})
+})
+
 test("matmul", () => {
     // multiplying by identity matrix does not change the matrix
     assert.deepEqual(matmul(I_1,I_1), I_1)
