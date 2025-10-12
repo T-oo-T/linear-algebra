@@ -1,6 +1,6 @@
 const { test } = require("node:test")
 const assert = require("assert").strict
-const { det, is_identity, is_square, is_invertable, matmul, transpose, dot } = require("../src/matrix")
+const { det, is_identity, is_square, is_invertable, matmul, transpose, dot, cross } = require("../src/matrix")
 
 const I_1 = [[1]]
 const I_2 = [[1,0], [0,1]]
@@ -68,6 +68,15 @@ test("transpose", () => {
             [3,6,9]
         ]
     )
+})
+
+test("cross product", () => {
+    assert.deepEqual(cross([1,2,3],[4,5,6]), [-3,-6,-3])
+    assert.deepEqual(cross([1,0,0],[0,0,1]), [0,1,0])
+    assert.deepEqual(cross([0,1,0],[0,0,1]), [1,0,0])
+    assert.throws(() => {
+        cross([1,2,3],[3,4])
+    }, {name: "Error", message: "Size of u and v must be 3, but got 3 and 2"})
 })
 
 test("dot product", () => {

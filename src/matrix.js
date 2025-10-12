@@ -66,6 +66,30 @@ function transpose(A) {
   return B
 }
 
+function cross(u, v) {
+  if (u.length !== 3 || v.length !== 3) {
+    throw new Error(`Size of u and v must be 3, but got ${u.length} and ${v.length}`)
+  }
+
+  let sub_i = [
+    [u[1], u[2]],
+    [v[1], v[2]]
+  ]
+  let sub_j = [
+    [u[0], u[2]],
+    [v[0], v[2]]
+  ]
+  let sub_k = [
+    [u[0], u[1]],
+    [v[0], v[1]]
+  ]
+  return [
+    det(sub_i),
+    det(sub_j),
+    det(sub_k)
+  ]
+}
+
 function dot(u, v) {
   if (u.length !== v.length) {
     throw new Error(`Incompatible vector sizes: ${u.length} and ${v.length}`)
@@ -107,5 +131,6 @@ module.exports = {
     is_invertable,
     matmul,
     transpose,
-    dot
+    dot,
+    cross
 }
