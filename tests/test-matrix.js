@@ -71,9 +71,9 @@ test("transpose", () => {
 })
 
 test("cross product", () => {
-    assert.deepEqual(cross([1,2,3],[4,5,6]), [-3,-6,-3])
-    assert.deepEqual(cross([1,0,0],[0,0,1]), [0,1,0])
-    assert.deepEqual(cross([0,1,0],[0,0,1]), [1,0,0])
+    assert.deepEqual(cross([1,2,3],[4,5,6]), [-3,6,-3])
+    assert.deepEqual(cross([1,0,0],[0,0,1]), [0,-1,0])
+    assert.deepEqual(cross([0,1,0],[0,0,1]), [1,-0,0]) // -0 and 0 have different bit presentations
     assert.throws(() => {
         cross([1,2,3],[3,4])
     }, {name: "Error", message: "Size of u and v must be 3, but got 3 and 2"})

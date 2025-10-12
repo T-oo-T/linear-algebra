@@ -85,7 +85,7 @@ function cross(u, v) {
   ]
   return [
     det(sub_i),
-    det(sub_j),
+    -det(sub_j),
     det(sub_k)
   ]
 }
