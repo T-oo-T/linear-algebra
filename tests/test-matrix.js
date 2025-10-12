@@ -1,6 +1,6 @@
 const { test } = require("node:test")
 const assert = require("assert").strict
-const { det, is_identity, is_square, is_invertable } = require("../src/matrix")
+const { det, is_identity, is_square, is_invertable, matmul } = require("../src/matrix")
 
 const I_1 = [[1]]
 const I_2 = [[1,0], [0,1]]
@@ -33,6 +33,12 @@ test('3x3 determinant', () => {
         [0,0,1],
         [0,5,0]
     ]), -5)
+    // linearly dependent
+    assert.strictEqual(det([
+        [1,1,1],
+        [2,2,2],
+        [33,85,991]
+    ]), 0)
 });
 
 test('4x4 determinant', () => {
@@ -43,6 +49,37 @@ test("identity matrix determinants", () => {
     assert.strictEqual(det(I_1), 1)
     assert.strictEqual(det(I_2), 1)
     assert.strictEqual(det(I_3), 1)
+})
+
+test("determinant laws", () => {
+    // |AB| = |A|*|B|
+    assert.strictEqual(
+        det(matmul(I_1,I_1)),
+        det(I_1)*det(I_1)
+    )
+    assert.strictEqual(
+        det(matmul(I_2,I_2)),
+        det(I_2)*det(I_2)
+    )
+    assert.strictEqual(
+        det(matmul(I_3,I_3)),
+        det(I_3)*det(I_3)
+    )
+    const A = [
+        [1,2,3],
+        [3,5,6],
+        [3,2,1]
+    ] // det -4
+    const B = [
+        [7,2,3],
+        [-3,5,6],
+        [4,2,1]
+    ] // -73
+    // -4 * -73  = 292
+    assert.strictEqual(
+        det(matmul(A,B)),
+        det(A)*det(B)
+    )
 })
 
 test("is_square", () => {

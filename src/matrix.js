@@ -54,9 +54,14 @@ function is_invertable(A) {
   return det(A) !== 0
 }
 
+function matmul(A, B) {
+  return A
+}
+
 module.exports = {
     det,
     is_square,
     is_identity,
-    is_invertable
+    is_invertable,
+    matmul
 }
