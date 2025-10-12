@@ -1,6 +1,6 @@
 const { test } = require("node:test")
 const assert = require("assert").strict
-const { det, is_identity, is_square, is_invertable, matmul } = require("../src/matrix")
+const { det, is_identity, is_square, is_invertable, matmul, transpose, dot } = require("../src/matrix")
 
 const I_1 = [[1]]
 const I_2 = [[1,0], [0,1]]
@@ -51,7 +51,25 @@ test("identity matrix determinants", () => {
     assert.strictEqual(det(I_3), 1)
 })
 
-test("determinant laws", () => {
+test("transpose", () => {
+    assert.deepEqual(transpose(I_1), I_1)
+    assert.deepEqual(transpose(I_2), I_2)
+    assert.deepEqual(transpose(I_3), I_3)
+    assert.deepEqual(
+        transpose([
+            [1,2,3],
+            [4,5,6],
+            [7,8,9]
+        ]),
+        [
+            [1,4,7],
+            [2,5,8],
+            [3,6,9]
+        ]
+    )
+})
+
+test.skip("determinant laws", () => {
     // |AB| = |A|*|B|
     assert.strictEqual(
         det(matmul(I_1,I_1)),

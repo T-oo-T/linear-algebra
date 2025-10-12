@@ -54,8 +54,45 @@ function is_invertable(A) {
   return det(A) !== 0
 }
 
+function transpose(A) {
+  let B = structuredClone(A)
+
+  for (let i = 0; i < A.length; i++) {
+    for (let j = 0; j < A[i].length; j++) {
+      B[i][j] = A[j][i]
+    }
+  }
+
+  return B
+}
+
+function dot(u, v) {
+  if (u.length !== v.length) {
+    throw new Error(`Incompatible vector size: ${u.length} and ${v.length}`)
+  }
+  
+  let sum = 0
+  for (let i = 0; i < u.length; i++) {
+    sum += u[i] * v[i]
+  }
+
+  return sum
+}
+
 function matmul(A, B) {
-  return A
+  if (A[0].length !== B.length) {
+    throw new Error(`Incompatible matrix sizes: [${A.length}][${A[0].length}] and [${B.length}][${B[0].length}]`)
+  }
+
+  let output = []
+  const BT = transpose(B)
+
+  for (let i = 0; i < A.length; i++) {
+    output.push(dot(A[i], BT[i]))
+  }
+
+  console.log(`output: ${output}, ${typeof output}`)
+  return output
 }
 
 module.exports = {
@@ -63,5 +100,7 @@ module.exports = {
     is_square,
     is_identity,
     is_invertable,
-    matmul
+    matmul,
+    transpose,
+    dot
 }
