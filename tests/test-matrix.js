@@ -23,6 +23,16 @@ test('3x3 determinant', () => {
         [1,0,0],
         [0,0,1]
     ]), -1)
+    assert.strictEqual(det([
+        [1,0,0],
+        [0,5,0],
+        [0,0,1]
+    ]), 5)
+    assert.strictEqual(det([
+        [1,0,0],
+        [0,0,1],
+        [0,5,0]
+    ]), -5)
 });
 
 test('4x4 determinant', () => {
