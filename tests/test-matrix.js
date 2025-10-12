@@ -83,7 +83,7 @@ test("matmul", () => {
     
 })
 
-test.skip("determinant laws", () => {
+test("determinant laws", () => {
     // |AB| = |A|*|B|
     assert.strictEqual(
         det(matmul(I_1,I_1)),
@@ -93,7 +93,7 @@ test.skip("determinant laws", () => {
         det(matmul(I_2,I_2)),
         det(I_2)*det(I_2)
     )
-    /*assert.strictEqual(
+    assert.strictEqual(
         det(matmul(I_3,I_3)),
         det(I_3)*det(I_3)
     )
@@ -111,7 +111,7 @@ test.skip("determinant laws", () => {
     assert.strictEqual(
         det(matmul(A,B)),
         det(A)*det(B)
-    )*/
+    )
 })
 
 test("is_square", () => {

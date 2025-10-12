@@ -93,13 +93,10 @@ function matmul(A, B) {
 
   for (let i = 0; i < output.length; i++) {
     for (let j = 0; j < output[i].length; j++) {
-      console.log(`dot(A[${i}], BT[${i}])=${dot(A[i], BT[i])}`)
       output[i][j] = dot(A[i], BT[j])
     }
   }
 
-  console.log("output")
-  console.log(output)
   return output
 }
 
