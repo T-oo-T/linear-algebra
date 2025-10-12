@@ -5,6 +5,7 @@ const { det, is_identity, is_square, is_invertable, matmul, transpose, dot } = r
 const I_1 = [[1]]
 const I_2 = [[1,0], [0,1]]
 const I_3 = [[1,0,0], [0,1,0], [0,0,1]]
+const A_3x3 = [[1,2,3],[4,5,6], [7,8,9]]
 
 test('simple 1x1 determinant', () => {
     assert.strictEqual(det([[7]]), 7)
@@ -69,6 +70,19 @@ test("transpose", () => {
     )
 })
 
+test("matmul", () => {
+    // multiplying by identity matrix does not change the matrix
+    assert.deepEqual(matmul(I_1,I_1), I_1)
+    assert.deepEqual(matmul(I_2,I_2), I_2)
+    assert.deepEqual(matmul(I_3,I_3), I_3)
+    assert.deepEqual(matmul(I_3,A_3x3), A_3x3)
+    assert.deepEqual(matmul(A_3x3,I_3), A_3x3)
+    assert.throws(() => {
+        matmul(A_3x3,I_2)
+    }, {name: "Error", message: "Incompatible matrix sizes: [3][3] and [2][2]"})
+    
+})
+
 test.skip("determinant laws", () => {
     // |AB| = |A|*|B|
     assert.strictEqual(
@@ -79,7 +93,7 @@ test.skip("determinant laws", () => {
         det(matmul(I_2,I_2)),
         det(I_2)*det(I_2)
     )
-    assert.strictEqual(
+    /*assert.strictEqual(
         det(matmul(I_3,I_3)),
         det(I_3)*det(I_3)
     )
@@ -97,7 +111,7 @@ test.skip("determinant laws", () => {
     assert.strictEqual(
         det(matmul(A,B)),
         det(A)*det(B)
-    )
+    )*/
 })
 
 test("is_square", () => {

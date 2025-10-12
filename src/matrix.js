@@ -79,19 +79,27 @@ function dot(u, v) {
   return sum
 }
 
+function matrix(i,j) {
+  return Array.from(new Array(i), () => new Array(j).fill(0))
+}
+
 function matmul(A, B) {
   if (A[0].length !== B.length) {
     throw new Error(`Incompatible matrix sizes: [${A.length}][${A[0].length}] and [${B.length}][${B[0].length}]`)
   }
 
-  let output = []
+  let output = matrix(A.length, B[0].length)
   const BT = transpose(B)
 
-  for (let i = 0; i < A.length; i++) {
-    output.push(dot(A[i], BT[i]))
+  for (let i = 0; i < output.length; i++) {
+    for (let j = 0; j < output[i].length; j++) {
+      console.log(`dot(A[${i}], BT[${i}])=${dot(A[i], BT[i])}`)
+      output[i][j] = dot(A[i], BT[j])
+    }
   }
 
-  console.log(`output: ${output}, ${typeof output}`)
+  console.log("output")
+  console.log(output)
   return output
 }
 
