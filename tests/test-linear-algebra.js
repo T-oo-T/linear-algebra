@@ -1,6 +1,6 @@
 const { test } = require("node:test")
 const assert = require("assert").strict
-const { det, is_identity, is_square, is_invertable, matmul, transpose, dot, cross } = require("../src/linear-algebra")
+const { det, is_identity, is_square, is_invertable, matmul, transpose, dot, cross, swap_rows } = require("../src/linear-algebra")
 
 const I_1 = [[1]]
 const I_2 = [[1,0], [0,1]]
@@ -167,4 +167,20 @@ test("is_invertable", () => {
         ]), 
         false
     )
+})
+
+test("swap_rows", () => {
+    let A = [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+    ]
+    let A_swap_0_2 = [
+        [7,8,9],
+        [4,5,6],
+        [1,2,3]
+    ]
+    assert.deepStrictEqual(swap_rows(A, 0, 2), A_swap_0_2)
+    assert.deepStrictEqual(swap_rows(A, 2, 0), A_swap_0_2)
+    assert.deepStrictEqual(swap_rows(A, 0, 0), A)
 })

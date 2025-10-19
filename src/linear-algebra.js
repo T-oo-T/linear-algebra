@@ -124,6 +124,15 @@ function matmul(A, B) {
   return output
 }
 
+function swap_rows(A, a_row_index, b_row_index) {
+  for (let i = 0; i < A[a_row_index].length; i++) {
+    let temp = A[b_row_index]
+    A[b_row_index] = A[a_row_index]
+    A[a_row_index] = temp
+  }
+  return A
+}
+
 module.exports = {
     det,
     is_square,
@@ -132,5 +141,6 @@ module.exports = {
     matmul,
     transpose,
     dot,
-    cross
+    cross,
+    swap_rows
 }
