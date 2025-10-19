@@ -133,6 +133,16 @@ function swap_rows(A, a_row_index, b_row_index) {
   return A
 }
 
+function scale_row(A, row_index, scalar) {
+  if (scalar === 0) {
+    throw new Error("Cannot scale by zero!")
+  }
+  for (let i = 0; i < A[row_index].length; i++) {
+    A[row_index][i] *= scalar
+  }
+  return A
+}
+
 module.exports = {
     det,
     is_square,
@@ -142,5 +152,6 @@ module.exports = {
     transpose,
     dot,
     cross,
-    swap_rows
+    swap_rows,
+    scale_row
 }

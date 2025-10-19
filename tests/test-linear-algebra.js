@@ -1,6 +1,6 @@
 const { test } = require("node:test")
 const assert = require("assert").strict
-const { det, is_identity, is_square, is_invertable, matmul, transpose, dot, cross, swap_rows } = require("../src/linear-algebra")
+const { det, is_identity, is_square, is_invertable, matmul, transpose, dot, cross, swap_rows, scale_row } = require("../src/linear-algebra")
 
 const I_1 = [[1]]
 const I_2 = [[1,0], [0,1]]
@@ -170,7 +170,7 @@ test("is_invertable", () => {
 })
 
 test("swap_rows", () => {
-    let A = [
+    let A = () => [
         [1,2,3],
         [4,5,6],
         [7,8,9]
@@ -180,7 +180,23 @@ test("swap_rows", () => {
         [4,5,6],
         [1,2,3]
     ]
-    assert.deepStrictEqual(swap_rows(A, 0, 2), A_swap_0_2)
-    assert.deepStrictEqual(swap_rows(A, 2, 0), A_swap_0_2)
-    assert.deepStrictEqual(swap_rows(A, 0, 0), A)
+    assert.deepStrictEqual(swap_rows(A(), 0, 2), A_swap_0_2)
+    assert.deepStrictEqual(swap_rows(A(), 2, 0), A_swap_0_2)
+    assert.deepStrictEqual(swap_rows(A(), 0, 0), A())
+})
+
+test("scale_row", () => {
+    let A = () => [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+    ]
+    assert.deepStrictEqual(scale_row(A(), 1, 2), [
+        [1,2,3],
+        [8,10,12],
+        [7,8,9]
+    ])
+    assert.throws(() => {
+        scale_row(A(), 0, 0)
+    }, {name: "Error", message: "Cannot scale by zero!"})
 })
