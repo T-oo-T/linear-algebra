@@ -213,3 +213,27 @@ test("sum_rows", () => {
         [7,8,9]
     ])
 })
+
+test("ref", () => {
+    let A = [
+        [2, 1, -1, 8],
+        [-3, -1, 2, -11],
+        [-2, 1, 2, -3]
+    ]
+    // TODO: ref should do these operations to reach row echelon form
+    assert.deepStrictEqual(sum_rows(A, 1, 0, 3/2), [
+        [2, 1, -1, 8],
+        [0, 1/2, 1/2, 1],
+        [-2, 1, 2, -3]
+    ])
+    assert.deepStrictEqual(sum_rows(A, 2, 0, 1), [
+        [2, 1, -1, 8],
+        [0, 1/2, 1/2, 1],
+        [0, 2, 1, 5]
+    ])
+    assert.deepStrictEqual(sum_rows(A, 2, 1, -4), [
+        [2, 1, -1, 8],
+        [0, 1/2, 1/2, 1],
+        [0, 0, -1, 1]
+    ])
+})
