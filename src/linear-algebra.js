@@ -143,6 +143,13 @@ function scale_row(A, row_index, scalar) {
   return A
 }
 
+function sum_rows(A, dst_row_index, src_row_index, scalar) {
+  for (let i = 0; i < A[dst_row_index].length; i++) {
+    A[dst_row_index][i] += scalar * A[src_row_index][i]
+  }
+  return A
+}
+
 module.exports = {
     det,
     is_square,
@@ -153,5 +160,6 @@ module.exports = {
     dot,
     cross,
     swap_rows,
+    sum_rows,
     scale_row
 }
