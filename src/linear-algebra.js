@@ -173,7 +173,11 @@ function rref(A) {
 }
 
 function I(n) {
-  return []
+  let A = matrix(n, n)
+  for (let i = 0; i < A.length; i++) {
+    A[i][i] = 1
+  }
+  return A
 }
 
 function inv(A) {
@@ -193,5 +197,6 @@ module.exports = {
     sum_rows,
     scale_row,
     rref,
-    inv
+    inv,
+    I
 }
