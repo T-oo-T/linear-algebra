@@ -147,6 +147,7 @@ function sum_rows(A, dst_row_index, src_row_index, scalar) {
   for (let i = 0; i < A[dst_row_index].length; i++) {
     A[dst_row_index][i] += scalar * A[src_row_index][i]
   }
+  
   return A
 }
 
@@ -154,22 +155,19 @@ function rref(A) {
   for (let i = 0; i < A.length; i++) {
     scale_row(A, i, 1/A[i][i])
   
-    console.log(`scaled diagonal row A[${i}][${i}]`)
-    
     // zero out all rows below this diagonal cell
     for (let j = i+1; j < A.length; j++) {
-      console.log("going down: zero out row", j)
       let sign = -Math.sign(A[i][i]) * Math.sign(A[j][i])
       sum_rows(A, j, i, sign * Math.abs(A[j][i]))
     }
 
     // zero out all rows above this diagonal cell
     for (let j = i-1; j >= 0; j--) {
-      console.log("going up: zero out row", j)
       let sign = -Math.sign(A[i][i]) * Math.sign(A[j][i])
       sum_rows(A, j, i, sign * Math.abs(A[j][i]))
     }
   }
+
   return A
 }
 
