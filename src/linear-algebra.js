@@ -150,6 +150,10 @@ function sum_rows(A, dst_row_index, src_row_index, scalar) {
   return A
 }
 
+function rref(A) {
+  return A
+}
+
 module.exports = {
     det,
     is_square,
@@ -161,5 +165,6 @@ module.exports = {
     cross,
     swap_rows,
     sum_rows,
-    scale_row
+    scale_row,
+    rref
 }
