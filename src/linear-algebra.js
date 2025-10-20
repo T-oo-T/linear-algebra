@@ -153,6 +153,7 @@ function sum_rows(A, dst_row_index, src_row_index, scalar) {
 
 function rref(A) {
   for (let i = 0; i < A.length; i++) {
+    // TODO: handle case when A[i][i] == 0
     scale_row(A, i, 1/A[i][i])
   
     // zero out all rows below this diagonal cell
@@ -171,6 +172,14 @@ function rref(A) {
   return A
 }
 
+function I(n) {
+  return []
+}
+
+function inv(A) {
+  return A
+}
+
 module.exports = {
     det,
     is_square,
@@ -183,5 +192,6 @@ module.exports = {
     swap_rows,
     sum_rows,
     scale_row,
-    rref
+    rref,
+    inv
 }
