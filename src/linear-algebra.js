@@ -180,6 +180,16 @@ function I(n) {
   return A
 }
 
+function matrixConcat(A, B) {
+  if (A.length !== B.length) {
+    throw new Error(`Incompatible row sizes ${A.length} and ${B.length}`)
+  }
+  for (let i = 0; i < A.length; i++) {
+    A[i] = A[i].concat(B[i])
+  }
+  return A
+}
+
 function inv(A) {
   return A
 }
@@ -198,5 +208,6 @@ module.exports = {
     scale_row,
     rref,
     inv,
-    I
+    I,
+    matrixConcat
 }

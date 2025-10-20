@@ -1,6 +1,6 @@
 const { test } = require("node:test")
 const assert = require("assert").strict
-const { det, is_identity, is_square, is_invertable, matmul, transpose, dot, cross, swap_rows, scale_row, sum_rows, rref, inv, I } = require("../src/linear-algebra")
+const { det, is_identity, is_square, is_invertable, matmul, transpose, dot, cross, swap_rows, scale_row, sum_rows, rref, inv, I, matrixConcat } = require("../src/linear-algebra")
 
 const I_1 = [[1]]
 const I_2 = [[1,0], [0,1]]
@@ -257,6 +257,19 @@ test("I", () => {
         [1,0,0],
         [0,1,0],
         [0,0,1]
+    ])
+})
+
+test("matrixConcat", () => {
+    assert.deepStrictEqual(matrixConcat([
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+    ], [[7],[7],[7]]),
+    [
+        [1,2,3,7],
+        [4,5,6,7],
+        [7,8,9,7],
     ])
 })
 
