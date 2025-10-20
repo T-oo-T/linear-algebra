@@ -191,7 +191,12 @@ function matrixConcat(A, B) {
 }
 
 function inv(A) {
-  return A
+  let len_A = A[0].length
+  let B = rref(matrixConcat(A, I(A[0].length)))
+  for (let i = 0; i < B.length; i++) {
+    B[i] = B[i].slice(len_A)
+  }
+  return B
 }
 
 module.exports = {

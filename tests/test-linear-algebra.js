@@ -273,7 +273,7 @@ test("matrixConcat", () => {
     ])
 })
 
-/*
+
 test("inv", () => {
     assert.deepStrictEqual(inv([
         [-1, 3/2],
@@ -282,4 +282,4 @@ test("inv", () => {
         [2, 3],
         [2, 2]
     ])
-})*/
+})
