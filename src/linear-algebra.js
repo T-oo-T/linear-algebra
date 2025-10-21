@@ -199,8 +199,20 @@ function inv(A) {
   return B
 }
 
+function diag(m,n) {
+  if (m >= n) {
+    return []
+  }
+  let I_ = I(n-m+1)
+  for (let i = 0; i < I_.length; i++) {
+    I_[i][i] = m + i
+  }
+  return I_
+}
+
 module.exports = {
     det,
+    diag,
     is_square,
     is_identity,
     is_invertable,
