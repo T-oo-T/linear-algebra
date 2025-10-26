@@ -265,6 +265,13 @@ test("rref", () => {
         [0, 1, 0, 3],
         [-0, -0, 1, -1] // TODO: handle -0 
     ])
+    assert.deepStrictEqual(rref([
+      [3,1,-8],
+      [2,4,-7]
+    ]), [
+        [1, 0, -2.5],
+        [0, 1, -0.5000000000000001], // TODO: use approximation
+    ])
 })
 
 test("I", () => {
