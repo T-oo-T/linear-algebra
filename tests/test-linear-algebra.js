@@ -272,6 +272,16 @@ test("rref", () => {
         [1, 0, -2.5],
         [0, 1, -0.5000000000000001], // TODO: use approximation
     ])
+    // TODO: make test pass by handling pivots accordinly
+    /*assert.deepStrictEqual(rref([
+        [-1,3,2,0],
+        [0,0,1,0],
+        [0,1,0,0]
+      ]), [
+        [1,0,0,0],
+        [0,1,0,0],
+        [0,0,1,0]
+      ])*/
 })
 
 test("I", () => {
