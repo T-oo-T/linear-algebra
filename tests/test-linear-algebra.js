@@ -1,4 +1,4 @@
-const { test } = require("node:test")
+const { describe, test } = require("node:test")
 const assert = require("assert").strict
 const { 
     det,
@@ -16,7 +16,10 @@ const {
     rref,
     inv,
     I,
-    matrixConcat 
+    matrixConcat,
+    flipHorizontal,
+    flipVertical,
+    rotate90
 } = require("../src/linear-algebra")
 
 const I_1 = [[1]]
@@ -328,3 +331,100 @@ test("diag", () => {
     ])
     assert.deepStrictEqual(diag(5,2), [])
 })
+
+describe("flipHorizontal", () => {
+    test("polyomino 1", () => {
+        assert.deepStrictEqual(
+            flipHorizontal([
+                [1,1,1],
+                [1,1,0],
+                [1,1,0]
+            ]),
+            [
+                [1,1,1],
+                [0,1,1],
+                [0,1,1]
+            ]
+        )
+    })
+    
+    test("polyomino 2", () => {
+        assert.deepStrictEqual(
+            flipHorizontal([
+                [1,1,1],
+                [1,1,0],
+                [0,1,1]
+            ]),
+            [
+                [1,1,1],
+                [0,1,1],
+                [1,1,0]
+            ]
+        )
+    })
+})
+
+describe("flipVertical", () => {
+    test("polyomino 1", () => {
+        assert.deepStrictEqual(
+            flipVertical([
+                [1,1,1],
+                [1,1,0],
+                [1,1,0]
+            ]),
+            [
+                [1,1,0],
+                [1,1,0],
+                [1,1,1]
+            ]
+        )
+    })
+    
+    test("polyomino 2", () => {
+        assert.deepStrictEqual(
+            flipVertical([
+                [1,1,1],
+                [1,1,0],
+                [0,1,1]
+            ]),
+            [
+                [0,1,1],
+                [1,1,0],
+                [1,1,1]
+            ]
+        )
+    })
+})
+
+describe("rotate90", () => {
+    test("polyomino 1", () => {
+        assert.deepStrictEqual(
+            rotate90([
+                [1,1,1],
+                [1,1,0],
+                [1,1,0]
+            ]),
+            [
+                [1,1,1],
+                [1,1,1],
+                [0,0,1]
+            ]
+        )
+    })
+
+    test("polyomino 2", () => {
+        assert.deepStrictEqual(
+            rotate90([
+                [1,1,1],
+                [1,1,0],
+                [0,1,1]
+            ]),
+            [
+                [0,1,1],
+                [1,1,1],
+                [1,0,1]
+            ]
+        )
+    })
+})
+

@@ -55,15 +55,13 @@ function is_invertable(A) {
 }
 
 function transpose(A) {
-  let B = structuredClone(A)
-
-  for (let i = 0; i < A.length; i++) {
-    for (let j = 0; j < A[i].length; j++) {
-      B[i][j] = A[j][i]
-    }
+  let T = Array.from(new Array(A[0].length), () => new Array(A.length).fill(0))
+  for (let i = 0; i < T.length; i++) {
+      for (let j = 0; j < T[i].length; j++) {
+          T[i][j] = A[j][i]
+      }
   }
-
-  return B
+  return T
 }
 
 function cross(u, v) {
@@ -210,6 +208,25 @@ function diag(m,n) {
   return I_
 }
 
+const SWAP_ROWS_3x3 = [
+  [0,0,1],
+  [0,1,0],
+  [1,0,0]
+]
+
+function flipHorizontal(A) {
+  return matmul(A, SWAP_ROWS_3x3)
+}
+
+function flipVertical(A) {
+  return matmul(SWAP_ROWS_3x3, A)
+}
+
+function rotate90(A) {   
+  return flipHorizontal(transpose(A))
+}
+
+
 module.exports = {
     det,
     diag,
@@ -226,5 +243,8 @@ module.exports = {
     rref,
     inv,
     I,
-    matrixConcat
+    matrixConcat,
+    flipHorizontal,
+    flipVertical,
+    rotate90
 }
